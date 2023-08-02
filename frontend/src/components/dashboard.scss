@@ -1,0 +1,330 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+.sidebar {
+  background-color: #1f263c;
+  padding: 8px 5px;
+  display: flex;
+  justify-content: center;
+  flex: 2;
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.li-items {
+  display: flex;
+  margin: 30px 7px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sidebar-btn-txt {
+  font-size: 20px;
+  margin: 7px;
+}
+
+.sidebar-btn-txt-bottom {
+  font-size: 0.5em;
+  text-align: center;
+  display: none;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.main-content {
+  background-color: #494b59;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  flex: 10;
+  position: relative;
+}
+
+.info-box {
+  min-height: 20vh;
+  margin: 20px;
+  font-size: 1.5em;
+  text-align: center;
+  background: #1f263c;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning-box {
+  min-height: 20vh;
+  margin: 20px;
+  font-size: 1.5em;
+  text-align: center;
+  background: #7b2424;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.catRatio-box {
+  display: flex;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1.3rem;
+  background: #7b2424;
+  min-height: 63px;
+  margin: 15px;
+  padding: 15px;
+  align-items: center;
+  justify-content: center;
+}
+
+.catRatio-info {
+  font-weight: bold;
+  background: darkred;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: larger;
+  margin-left: 15px;
+}
+
+.dashboard-title {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.charts {
+  display: flex;
+}
+
+.image-container {
+  flex: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // flex-direction: column;
+  padding: 5px;
+}
+
+.camera-image {
+  // width: 100%;
+  height: auto;
+  max-width: 80%;
+  aspect-ratio: 1.73;
+  margin: 15px;
+}
+
+.gauge-container {
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 60vh;
+}
+
+.chart-info {
+  border: outset #0e0d0d;
+  margin: 5px;
+  padding: 5px;
+  background: rgb(31 38 60);
+  border-radius: 20px;
+  padding-bottom: 20px;
+  width: 95%;
+
+  li {
+    padding: 2px;
+    color: #fada23;
+  }
+}
+
+.gauge-chart {
+  border: outset #0e0d0d;
+  margin: 5px;
+  padding: 5px;
+  background: rgb(31 38 60);
+  border-radius: 20px;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar-charts-container {
+  display: flex;
+  margin: 20px 0;
+}
+
+.bar-chart,
+.area-chart {
+  border: outset #0e0d0d;
+  margin: 5px;
+  padding: 5px;
+  background: #1f263c;
+  border-radius: 20px;
+  width: 50%;
+}
+
+@media (max-width: 1000px) {
+  .sidebar-btn-txt {
+    display: none;
+  }
+
+  .sidebar-btn-txt-bottom {
+    display: inherit;
+  }
+
+  .dashboard-title {
+    font-size: 20px;
+  }
+
+  .li-items {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: 1;
+  }
+
+  .main-content {
+    flex: 11;
+  }
+
+  .charts {
+    flex-direction: column;
+  }
+
+  .gauge-container {
+    flex-direction: row;
+    align-items: stretch;
+    min-height: 40vh;
+
+    .chart-info {
+      padding-bottom: 6px;
+      width: 50%;
+    }
+
+    .gauge-chart {
+      width: 50%;
+    }
+  }
+
+  .bar-charts-container {
+    flex-direction: column;
+
+    .bar-chart,
+    .area-chart {
+      width: 94%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .gauge-container {
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+
+    .chart-info {
+      padding-bottom: 20px;
+      width: 94%;
+    }
+
+    .gauge-chart {
+      width: 94%;
+    }
+  }
+}
+
+.fade-in {
+  animation: fadeInAnimation 1s ease-in forwards;
+}
+
+.fade-out {
+  animation: fadeOutAnimation 1s ease-out forwards;
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutAnimation {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.progress-bar-container, .progress-bar-container1 {
+  position: relative;
+  width: 100%;
+}
+
+.progress-bar, .progress-bar1 {
+  width: 100%;
+  height: 50px;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 17px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.progress-bar-container .progress-bar {
+  background-color: #e0e0e0; /* Set the background color of the progress bar */
+  border-radius: 10px; 
+  overflow: hidden;
+}
+
+.progress-bar-container .progress-bar::-webkit-progress-value {
+  background-color: #ff0404; /* Set the color of the progress bar itself */
+  border-radius: 10px; 
+}
+
+.text{
+  font-size: 22px;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.progress-bar-container1 .progress-bar1 {
+  background-color: #e0e0e0; /* Set the background color of the progress bar */
+  border-radius: 10px; 
+  overflow: hidden;
+}
+
+.progress-bar-container1 .progress-bar1::-webkit-progress-value {
+  background-color: #ff0404; /* Set the color of the progress bar itself */
+  border-radius: 10px; 
+}

@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/usr/src/app/frontend/src
+    links:
+      - flask_backend
+      - node_backend
+
+  node_backend:
+    build: ./node_backend
+    container_name: node_backend
+    expose: 
+      - 4000
+    volumes:
+      - ./node_backend:/app/node_backend/src
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+
+  flask_backend:
+    build: ./flask_backend
+    container_name: flask_backend
+    expose:
+      - 5000
+    volumes:
+      - ./flask_backend:/app/flask_backend
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_USERNAME=${MONGO_USERNAME}
+      - MONGO_PASSWORD=${MONGO_PASSWORD}
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+    volumes:
+      - ./mongodb_data:/data/db
+    expose:
+      - 27017
+
+volumes:
+  mongodb_data:

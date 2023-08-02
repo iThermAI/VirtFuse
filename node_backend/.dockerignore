@@ -1,0 +1,6 @@
+npm-debug.log
+Dockerfile
+.gitlab-ci.yml
+
+node_modules
+config/node_modules

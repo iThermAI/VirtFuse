@@ -1,0 +1,35 @@
+.header-title{
+    font-size: 25px !important;  
+    padding: 2px 0;
+}
+
+.admin-logo{
+    font-size: 45px !important;
+}
+
+.admin-text {
+    font-size: 25px;
+    margin-left: 5px;
+}
+
+.logo-size {
+    height: 40px !important;
+    width: 40px !important;
+}
+
+@media (max-width: 600px) {
+    .header-title {
+        font-size: 20px !important;
+    }
+    .admin-logo{
+        font-size: 25px !important;
+    }
+    .admin-text {
+        font-size: 20px;
+        margin-left: 5px;
+    }
+    .logo-size {
+        height: 25px !important;
+        width: 25px !important;
+    }
+}

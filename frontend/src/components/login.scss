@@ -1,0 +1,89 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8vh 0;
+}
+
+.form-wrapper {
+  min-width: 300px;
+  width: 40vw;
+  background: #1f263c;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: #dee1e6 0px 5px 15px;
+  border-radius: 40px 0;
+}
+
+.form-intro {
+  margin: 20px 10px;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.input-item {
+  margin: 20px 10px;
+  text-align: center;
+  width: 100%;
+  color: inherit;
+}
+
+.avatar {
+  margin: 5px auto;
+}
+
+.icon {
+  height: inherit !important;
+  width: inherit !important;
+}
+
+.submit-btn {
+  background-color: #1d8d55 !important;
+  width: 50%;
+  margin: 15px 0 !important;
+}
+
+.desc-link {
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+#email,
+#username {
+  width: 100%;
+}
+
+.input-label {
+  font-weight: bold;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.input-text {
+  border-radius: 5px;
+  height: 35px;
+  color: white;
+  background-color: #5a5c68;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.password-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.input-text[type="password"] {
+  -webkit-text-security: disc; /* hide the password */
+  -moz-text-security: disc;
+  text-security: disc;
+}

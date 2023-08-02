@@ -1,0 +1,40 @@
+@app.route('/api/getFrame')
+def getFrame():
+    global stop_event, frameNumber
+    if not stop_event.is_set() and frameNumber < total:
+        video_rgb.set(cv2.CAP_PROP_POS_FRAMES, frameNumber)
+        ret, frame = video_rgb.read()
+        _, jpeg = cv2.imencode('.jpg', frame)
+        return Response(jpeg.tobytes(), mimetype='image/jpeg')
+    return "Experiment finished", 500
+
+@app.route('/api/getFrameTH')
+def getFrameTH():
+    global stop_event, frameNumber
+    if not stop_event.is_set() and frameNumber < total:
+        video_th.set(cv2.CAP_PROP_POS_FRAMES, frameNumber)
+        ret, frame = video_th.read()
+        _, jpeg = cv2.imencode('.jpg', frame)
+        return Response(jpeg.tobytes(), mimetype='image/jpeg')
+    return "Experiment finished", 500
+
+@app.route('/api/getFrames')
+def getFrames():
+    global stop_event, frameNumber
+    if not stop_event.is_set() and frameNumber < total:
+        # Read RGB frame
+        video_rgb.set(cv2.CAP_PROP_POS_FRAMES, frameNumber)
+        ret_rgb, frame_rgb = video_rgb.read()
+        _, jpeg_rgb = cv2.imencode('.jpg', frame_rgb)
+        encoded_image_rgb = base64.b64encode(jpeg_rgb.tobytes()).decode('utf-8')
+
+        # Read TH frame
+        video_th.set(cv2.CAP_PROP_POS_FRAMES, frameNumber)
+        ret_th, frame_th = video_th.read()
+        _, jpeg_th = cv2.imencode('.jpg', frame_th)
+        encoded_image_th = base64.b64encode(jpeg_th.tobytes()).decode('utf-8')
+
+        # Return both frames as a JSON object
+        return jsonify({'image_rgb': encoded_image_rgb, 'image_th': encoded_image_th})
+
+    return "Experiment finished", 500

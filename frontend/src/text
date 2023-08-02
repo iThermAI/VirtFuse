@@ -1,0 +1,267 @@
+import React, { useState, useEffect } from 'react';
+import {
+  Toolbar,
+  List,
+  CssBaseline,
+  Typography,
+  Divider,
+  ListItem,
+  ListItemText,
+  ListItemButton,
+  ListItemIcon,
+  Box,
+  Avatar,
+  IconButton
+} from "@mui/material";
+import {
+  Mail as MailIcon,
+  Menu as MenuIcon,
+  ChevronLeft as ChevronLeftIcon,
+  Inbox as InboxIcon,
+  PlayCircleFilled as PlayCircleFilledIcon,
+  Cancel as CancleIcon
+} from "@mui/icons-material";
+import Grid from "@mui/material/Unstable_Grid2";
+import {
+  DrawerHeader,
+  AppBar,
+  Drawer,
+  Item
+} from "./MUI/MUIFunctions";
+import ApexChart from "./Charts/RadarChart";
+import { AspectRatio } from '@mui/joy';
+import { styled } from '@mui/material/styles';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+
+const CustomTooltip = styled(({ className, ...props }) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))({
+  [`& .${tooltipClasses.tooltip}`]: {
+    fontSize: "20px"
+  },
+});
+
+
+export default function App() {
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const [clipPath, setClipPath] = useState('ellipse(30% 15% at 55% 60%)');
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // generate a random clip path value
+      const newClipPath = `ellipse(${Math.random() * 100}%  ${Math.random() * 100}% at ${Math.random() * 100}% ${Math.random() * 100}%)`;
+      setClipPath(newClipPath);
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
+
+  const start = () => {
+    console.log("start")
+  }
+
+  const exit = () => {
+    console.log("exit")
+  }
+
+  return (
+    <>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <IconButton sx={{ px: 1 }}>
+              <Avatar alt="Kyklos" src="logo192.png" />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Kyklos Dashboard
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <Typography variant="h6" Wrap component="div" edge="start">
+              Enjoy!
+            </Typography>
+            <IconButton onClick={handleDrawerClose} edge="end">
+              <ChevronLeftIcon />
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            {[["Start", <PlayCircleFilledIcon onClick={start} />], ["End", <CancleIcon onClick={exit} />]].map((i, index) => (
+              <ListItem key={i[0]} disablePadding sx={{ display: "block" }}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {i[1]}
+                  </ListItemIcon>
+                  <ListItemText primary={i[0]} sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+        <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            backgroundColor: "#eeeaea",
+            minHeight: "100vh",
+          }}
+        >
+          <DrawerHeader />
+          <Typography paragraph align="center" fontWeight="bold">
+            The introduction or any information which is needed.
+          </Typography>
+          <Box
+            sx={{
+              flexGrow: 1,
+              my: 2,
+              p: 1,
+              borderRadius: 2,
+              boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+              fontSize: "0.875rem",
+              fontWeight: "700",
+              minHeight: "350px",
+              backgroundColor: "white",
+            }}
+          >
+            <AspectRatio objectFit="fill" maxHeight={500} minWidth="100%" position="relative">
+              <img alt="Sample" src={require("./assets/sample1.jpg")} style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }} />
+              <div style={{ position: 'absolute', top: "50%", left: "50%", transform: 'translate(-50%, -50%)', zIndex: 2 }}>
+                <ApexChart />
+              </div>
+            </AspectRatio >
+          </Box>
+          <Box
+            sx={{
+              flexGrow: 1,
+              my: 2,
+              p: 1,
+              borderRadius: 2,
+              boxShadow: "1px 1px 1px rgba(0, 0, 0, 0.25)",
+              fontSize: "0.875rem",
+              fontWeight: "700",
+              minHeight: "350px",
+              backgroundColor: "white",
+            }}
+          >
+            <AspectRatio objectFit="fill" maxHeight={500} minWidth="100%" position="relative">
+              <img alt="Sample" src={require("./assets/sample1.jpg")} style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }} />
+              <CustomTooltip title="red" followCursor>
+                <div style={{
+                  position: 'absolute', top: 0, left: 0, zIndex: 4,
+                  backgroundColor: 'red', width: "100%", height: "100%",
+                  // clipPath: "polygon(50% 50%, 80% 60%, 80% 70%, 40% 80%, 20% 70%, 20% 60%)",
+                  // clipPath: "ellipse(30% 15% at 55% 60%)",
+                  clipPath: clipPath,
+                  opacity: "0.4",
+                  borderRadius: "50px / 30px"
+                }}>
+                </div>
+              </CustomTooltip>
+              <CustomTooltip title="orange" followCursor>
+                <div style={{
+                  position: 'absolute', top: 0, left: 0, zIndex: 3,
+                  backgroundColor: 'orange', width: "100%", height: "100%",
+                  // clipPath: "polygon(50% 50%, 80% 60%, 80% 70%, 40% 80%, 20% 70%, 20% 60%)",
+                  clipPath: "ellipse(35% 18% at 55% 60%)",
+                  opacity: "0.4",
+                  borderRadius: "50px / 30px"
+                }}>
+                </div>
+              </CustomTooltip>
+              <CustomTooltip title="yellow" followCursor>
+                <div style={{
+                  position: 'absolute', top: 0, left: 0, zIndex: 2,
+                  backgroundColor: 'yellow', width: "100%", height: "100%",
+                  // clipPath: "polygon(50% 50%, 80% 60%, 80% 70%, 40% 80%, 20% 70%, 20% 60%)",
+                  clipPath: "ellipse(10% 40% at 50% 50%)",
+                  opacity: "0.4",
+                  borderRadius: "50px / 30px",
+                  transform: "skewX(-20deg) rotate(20deg)"
+                }}>
+                </div>
+              </CustomTooltip>
+            </AspectRatio >
+          </Box>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid
+              container
+              sx={{
+                margin: "auto",
+              }}
+              spacing={2}
+            >
+              <Grid
+                item
+                sx={{
+                  pl: 0,
+                }}
+                xs={12}
+                sm={12}
+                md={4}
+              >
+                <Item sx={{ minHeight: "200px" }}><ApexChart /></Item>
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={4}
+              >
+                <Item sx={{ minHeight: "200px" }}>"Reserved for charts!"</Item>
+              </Grid>
+              <Grid
+                item
+                sx={{
+                  pr: 0,
+                }}
+                xs={12}
+                sm={12}
+                md={4}
+              >
+                <Item sx={{ minHeight: "200px" }}>"Reserved for charts!"</Item>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Box >
+    </>
+  );
+}

@@ -1,0 +1,9 @@
+.align-comp {
+    margin-top: 64px;
+}
+
+@media (min-width: 347px) and (max-width: 600px) {
+    .align-comp {
+        margin-top: 56px;
+    }
+}
