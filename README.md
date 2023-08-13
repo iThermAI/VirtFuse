@@ -10,7 +10,8 @@ The VirtFuse –**Smart circular-compliant Vacuum infusion in Industry 4.0: Mixe
 The key objective of VirtFuse is to develop a dashboard that visualizes multidimensional data related to the vacuum infusion process in real-time. This dashboard provides essential information to the responsible operator, allowing them to monitor various aspects of the process, including the spread, curing level, and potential defects.  
 
 <div align="center">
-  <img src="./images/VirtFuse_Project.jpg" alt="VirtFuse Project">
+  <img src="./images/VirtFuse_Project.jpg" alt="VirtFuse Project"
+  width="100%">
 </div>
 
 ## Key Features
@@ -94,9 +95,9 @@ Once the VirtFuse Dashboard is up and running, here's how to make the most of it
 
 3. **Finish the Experiment:** After completing the experiment, simply press the 'Finish' button to proceed to the summary page. From there, you'll gain access to comprehensive data from the entire experiment. One of the crucial pieces of information available is the final score of infusion, which is the result of the deep learning model. This score provides valuable insights and evaluation of the model's performance.
 
-![Dashboard View](./images/dashboard_view1.JPG)
-![Dashboard View](./images/dashboard_view2.JPG)
-![Dashboard View](./images/dashboard_view3.JPG)
+<img src="./images/dashboard_view1.JPG" alt="Dashboard View" width="300" style="margin-bottom: 20px; width: 100%" />
+<img src="./images/dashboard_view2.JPG" alt="Dashboard View" width="300" style="margin-bottom: 20px; width: 100%" />
+<img src="./images/dashboard_view3.JPG" alt="Dashboard View" width="300" style="margin-bottom: 20px; width: 100%" />
 
 ## Contact
 
